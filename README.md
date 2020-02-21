@@ -13,6 +13,6 @@ In order to deploy, you will need to follow the below described steps:
 6. go the "build" folder 
 7. confirm 
 
-~ for the next time ~
+~ for the next times ~
 
 5. click on "Update"
