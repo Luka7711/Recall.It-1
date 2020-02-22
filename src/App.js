@@ -111,6 +111,7 @@ export default function RecipeReviewCard() {
   }
 
   return (
+    console.log("hello world")
     <Card className={classes.root}>
       {console.log(product)}
       <CssBaseline />
