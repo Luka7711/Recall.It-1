@@ -1,10 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component} from 'react';
 import './App.css';
 import Logo from './components/logo';
 import Products from './components/products';
 import Result from './components/result'
 
+
 class App extends Component{
+
 	constructor(){
 		super();
 		this.state = {
@@ -12,7 +14,7 @@ class App extends Component{
 			displayListOfProducts:false
 		}
 		this.showResults = this.showResults.bind(this);
-		this.resultsOff = this.resultsOff.bind(this)
+		this.resultsOff = this.resultsOff.bind(this);
 	}
 
 	componentDidMount(){

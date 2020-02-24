@@ -55,6 +55,9 @@ export default function RecipeReviewCard() {
     isDataRequest: true
   });
 
+  const [displayProductResult, setDisplayProductResult] = useState(false);
+  const [displayListOfProducts, setDisplayListOfProducts] = useState(false);
+
   if (product.isDataRequest) {
     chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
       console.log("try to send request");
@@ -83,6 +86,31 @@ export default function RecipeReviewCard() {
                   categorie: data.categorie,
                   isDataRequest: false
                 });
+
+                retrieveProductData = async() => {
+                  try{
+                      let response = await fetch("https://www.saferproducts.gov/RestWebServices/Recall?ProductName=Baby&format=json", {
+                        method:'GET'
+                      })
+
+                      let parsedResponse = await response.json();
+                       setProductsByName(parsedResponse);
+                      response = await fetch("https://www.saferproducts.gov/RestWebServices/Recall?ProductType=Kitchen&format=json", {
+                           method:"GET"
+                      })
+                      parsedResponse = await response.json();
+                       setProductByType(parsedResponse)
+                      response = await fetch("https://www.saferproducts.gov/RestWebServices/Recall?Manufacturer=Walmart&format=json", {
+                            method:"GET"
+                      })
+                      parsedResponse = await response.json();
+                       setProductByManufacturer(parsedResponse)
+  
+                  }catch(err){
+               }
+               retrieveProductData()
+
+            }
               else
                 setProduct({
                   image: response.image,
